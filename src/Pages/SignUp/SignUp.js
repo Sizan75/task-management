@@ -2,7 +2,6 @@ import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
-import useToken from '../../hooks/useToken';
 import { AuthContext } from '../../context/AuthProvider';
 
 const SignUp = () => {
@@ -10,13 +9,13 @@ const SignUp = () => {
     const [signUpError, setSignUPError] = useState('')
     const { createUser, updateUser } = useContext(AuthContext);
     const imageHostKey = process.env.REACT_APP_img_key;
-    const [createdUserEmail, setCreatedUserEmail]= useState('')
-    const [token]= useToken(createdUserEmail)
+    // const [createdUserEmail, setCreatedUserEmail]= useState('')
+
     const navigate = useNavigate()
     const location = useLocation();
     const from = location.state?.from?.pathname || '/'
 
-        navigate('/')
+       
     
     const handleSignUp = (data) => {
         const image = data.photo[0];
@@ -32,12 +31,12 @@ const SignUp = () => {
         .then(imgdata => {
             const users = {
                 image: imgdata.data.url,
-                userName: data.userName,
+                userName: data.name,
                 email: data.email,
                 bio: data.bio
             }
 
-            localStorage.setItem(JSON.stringify(users))
+            localStorage.setItem('user', JSON.stringify(users))
         })
 
         setSignUPError('');
@@ -49,7 +48,7 @@ const SignUp = () => {
                 
                 const userInfo = {
                     userName: data.name,
-                    profilePicture: data.profilePicture,
+                    profilePicture: result.data.url,
                     email: data.email,
                     bio: data.bio
                 }
