@@ -1,10 +1,11 @@
 import React from 'react';
-import SignUp from '../SignUp/SignUp';
+import AddTask from '../AddTask/AddTask';
+
 
 const Home = () => {
     return (
         <div>
-            <SignUp></SignUp>
+           <AddTask></AddTask>
         </div>
     );
 };

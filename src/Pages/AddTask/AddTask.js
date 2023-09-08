@@ -50,27 +50,35 @@ const AddTask = () => {
             <div className='mx-auto'>
                 <form onSubmit={handleSubmit(handleAddTask)}>
                     <div className="form-control w-full max-w-xs">
-                        <label className="block mb-2 text-sm font-medium text-gray-900">Task Name</label>
+                        <label className="block text-base">Task Title</label>
 
-                        <input type="text" {...register("name", {
-                            required: "Name is Required"
-                        })} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " />
-
-                    </div>
-                    <div className="form-control w-full max-w-xs">
-                        <label className="block mb-2 text-sm font-medium text-gray-900">Email</label>
-
-                        <input defaultValue={user?.email} type="email" {...register("email", {
-                            required: "Email is Required"
-                        })} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " />
+                        <input type="text" {...register("title", {
+                            required: "Title is Required"
+                        })} className="input input-bordered input-accent w-full max-w-xs " />
 
                     </div>
                     <div className="form-control w-full max-w-xs">
-                    <label className="block mb-2 text-sm font-medium text-gray-900" >Task Image</label>
+                        <label className="block text-base">Description</label>
 
-                        <input type="file" {...register("photo", {
-                            required: "Photo is Required"
-                        })} className="block w-full text-lg text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50  focus:outline-none" />
+                        <input defaultValue={user?.email} type="textarea" {...register("description", {
+                            required: "Description is Required"
+                        })} className="input input-bordered input-accent w-full max-w-xs " />
+
+                    </div>
+                    <div className="form-control w-full max-w-xs">
+                        <label className="block text-base">Duue Date</label>
+
+                        <input type="date" {...register("due-date", {
+                            required: "due date is Required"
+                        })} className="input input-bordered input-accent w-full max-w-xs " />
+
+                    </div>
+                    <div className="form-control w-full max-w-xs">
+                        <label className="block text-base">Priority Level</label>
+
+                        <input type="text" {...register("priority-lvl", {
+                            required: "Priority level is Required"
+                        })} className="input input-bordered input-accent w-full max-w-xs " />
 
                     </div>
 
